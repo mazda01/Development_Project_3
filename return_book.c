@@ -20,7 +20,9 @@ void returnBook()
             if (!availability[i])
             {
                 availability[i] = 1;
-                printf("You returned the book: %s\n", title);
+                printf("You returned the book:\n");
+                printf("Tittle\t Author\n");
+                printf("%s\t %s\n", titles, authors);
                 return;
             }
             else
