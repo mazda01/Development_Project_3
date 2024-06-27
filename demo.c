@@ -1,6 +1,7 @@
 #include<stdio.h>
 int main()
 {
+    printf("***********\n");
     printf("mazda");
-    printf("**********");
+    printf("\n**********");
 }
