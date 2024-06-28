@@ -178,9 +178,12 @@ void borrowBook()
             if (availability[i])
             {
                 availability[i] = 0;
+                printf("\n============================================");
                 printf("You have successfully borrowed:\n");
+                printf("\n============================================");
                 printf("Title\t Author\n");
                 printf("%s\t %s\n", titles[i], authors[i]);
+                printf("\n============================================");
                 return;
             }
             else
@@ -208,9 +211,12 @@ void returnBook()
             if (!availability[i])
             {
                 availability[i] = 1;
+                printf("\n============================================");
                 printf("You returned the book:\n");
+                printf("\n============================================");
                 printf("Title\t Author\n");
                 printf("%s\t %s\n", titles[i], authors[i]);
+                printf("\n============================================");
                 return;
             }
             else
@@ -235,7 +241,10 @@ void searchBooksByTitle()
     {
         if (strstr(titles[i], title) != NULL)
         {
-            printf("Title: %s, Author: %s, Available: %s\n", titles[i], authors[i], availability[i] ? "Yes" : "No");
+            printf("\n============================================");
+            printf("Title\t Author\n");
+            printf(" %s\t, %s\n, Available: %s\n", titles[i], authors[i], availability[i] ? "Yes" : "No");
+            printf("\n============================================");
             found = 1;
         }
     }
@@ -256,7 +265,10 @@ void searchBooksByAuthor()
     {
         if (strstr(authors[i], author) != NULL)
         {
-            printf("Title: %s, Author: %s, Available: %s\n", titles[i], authors[i], availability[i] ? "Yes" : "No");
+            printf("\n============================================");
+            printf("Title\t Author\n");
+            printf(" %s\t, %s\n, Available: %s\n", titles[i], authors[i], availability[i] ? "Yes" : "No");
+            printf("\n============================================");
             found = 1;
         }
     }
