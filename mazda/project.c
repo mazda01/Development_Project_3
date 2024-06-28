@@ -1,50 +1,77 @@
 #include <stdio.h>
-int choicenumber;
-int authorName;
-int TittleName;
+#include <string.h>
+
+void addBook();
+void DisplayAvailableBooks();
+void borrowBook();
+void returnBook();
+void searchBooksByTitle();
+void searchBooksByAuthor();
+
+char titles[5][100];
+char authors[5][100];
+int availability[5];
+int bookCount = 0;
 
 int main()
 {
-    printf("************** Library Management System***********");
-    printf("\n1-Add New Book");
-    printf("\n2-Disply Available Books");
-    printf("\n3-Borrow book");
-    printf("\n4-Return Book");
-    printf("\n5-Search Book by title");
-    printf("\n6-Exit");
+    int choice;
+    char input[10];
 
-    while (1)
+        printf("\nLibrary Management System\n");
+        printf("1. Add Book\n");
+        printf("2. Display Available Books\n");
+        printf("3. Borrow Book\n");
+        printf("4. Return Book\n");
+        printf("5. Search Books by Title\n");
+        printf("6. Search Books by Author\n");
+        printf("0. Exit");
+    do
     {
-        printf("\n\nplease enter the choice : ");
-        scanf("%d", &choicenumber);
-        if (choicenumber == 1)
-        {
-            
-        }
-        else if(choicenumber==2)
-        {
+        printf("\nEnter your choice: ");
 
-        }
-        else if(choicenumber==3)
-        {
+        scanf("%s", input);
+        choice = -1;
 
-        }
-        else if(choicenumber==4)
+        if (strlen(input) == 1 && input[0] >= '0' && input[0] <= '6')
         {
-
-        }
-        else if(choicenumber==5)
-        {
-
-        }
-        else if(choicenumber==0)
-        {
-            break;
+            choice = input[0] - '0';
         }
         else
         {
-            printf("\ninvalid choice number");
+            printf("Invalid choice. Please try again.\n");
+            continue;
         }
-    }
+
+        if (choice == 1)
+        {
+            addBook();
+        }
+        else if (choice == 2)
+        {
+            DisplayAvailableBooks();
+        }
+        else if (choice == 3)
+        {
+            borrowBook();
+        }
+        else if (choice == 4)
+        {
+            returnBook();
+        }
+        else if (choice == 5)
+        {
+            searchBooksByTitle();
+        }
+        else if (choice == 6)
+        {
+            searchBooksByAuthor();
+        }
+        else if (choice == 0)
+        {
+            printf("Exiting the system.\n");
+        }
+    } while (choice != 0);
+
     return 0;
 }
