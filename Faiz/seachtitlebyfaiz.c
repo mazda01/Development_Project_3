@@ -25,7 +25,7 @@ void searchBooksByTitle()
 
     for (i = 0; i < bookCount; i++)
     {
-        if (strstr(titles[i], title) != NULL)
+        if (strstr(titles[i], title, strlen(title)) == 0)
         {
             printf("\n============================================");
             printf("\nTitle  \t \t            Author");
