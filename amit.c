@@ -9,22 +9,35 @@ int bookCount = 0;
 void searchBooksByAuthor()
 {
     char author[100];
-    printf("Enter the author to search for: ");
-    scanf(" %[^\n]%*c", author);
-
+    int isDigits;
     int found = 0;
-    int i = 0;
-    while (i < bookCount)
+    int i;
+
+    do
+    {
+        printf("Enter the author to search for: ");
+        scanf(" %[^\n]%*c", author);
+        isDigits = isOnlyDigits(author);
+        if (isDigits)
+        {
+            printf("\033[0;31mInvalid input. Author name cannot be only digits.\033[0m\n");
+        }
+    } while (isDigits);
+
+    for (i = 0; i < bookCount; i++)
     {
         if (strstr(authors[i], author) != NULL)
         {
-            printf("Title: %s, Author: %s, Available: %s\n", titles[i], authors[i], availability[i] ? "Yes" : "No");
+            printf("\n============================================");
+            printf("\nTitle  \t \t            Author");
+            printf("\n=============================================\n");
+            printf("%s    \t \t           %s\n", titles[i], authors[i]);
+            printf("Available: %s\n", availability[i] ? "Yes" : "No");
             found = 1;
         }
-        i++;
     }
     if (!found)
     {
-        printf("No books found by the author '%s'.\n", author);
+        printf("\033[0;31mNo books found by the author '%s'.\033[0m\n", author);
     }
 }
