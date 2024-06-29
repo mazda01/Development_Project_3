@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-
-char titles[5][100];
-char authors[5][100];
-int availability[5];
-int bookCount = 0;
 
 void returnBook()
 {
