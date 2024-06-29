@@ -18,18 +18,17 @@ int main()
     int choice;
     char input[10];
 
-        printf("\nLibrary Management System\n");
-        printf("1. Add Book\n");
-        printf("2. Display Available Books\n");
-        printf("3. Borrow Book\n");
-        printf("4. Return Book\n");
-        printf("5. Search Books by Title\n");
-        printf("6. Search Books by Author\n");
-        printf("0. Exit");
+    printf("\nLibrary Management System\n");
+    printf("1. Add Book\n");
+    printf("2. Display Available Books\n");
+    printf("3. Borrow Book\n");
+    printf("4. Return Book\n");
+    printf("5. Search Books by Title\n");
+    printf("6. Search Books by Author\n");
+    printf("0. Exit\n");
     do
     {
-        printf("\nEnter your choice: ");
-
+        printf("\033[0;33m\nEnter your choice: \033[0m");
         scanf("%s", input);
         choice = -1;
 
@@ -39,7 +38,7 @@ int main()
         }
         else
         {
-            printf("Invalid choice. Please try again.\n");
+            printf("\033[0;31mInvalid choice. Please try again.\033[0m\n");
             continue;
         }
 
