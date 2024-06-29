@@ -28,7 +28,7 @@ int main()
     printf("0. Exit\n");
     do
     {
-        printf("\nEnter your choice: ");
+        printf("\033[0;33m\nEnter your choice: \033[0m");
         scanf("%s", input);
         choice = -1;
 
@@ -38,7 +38,7 @@ int main()
         }
         else
         {
-            printf("Invalid choice. Please try again.\n");
+            printf("\033[0;31mInvalid choice. Please try again.\033[0m\n");
             continue;
         }
 
@@ -75,12 +75,12 @@ int main()
     return 0;
 }
 
-int isOnlyDigits(char digit[])
+int isOnlyDigits(char str[])
 {
     int i = 0;
-    while (digit[i] != '\0')
+    while (str[i] != '\0')
     {
-        if (digit[i] < '0' || digit[i] > '9')
+        if (str[i] < '0' || str[i] > '9')
         {
             return 0;
         }
@@ -117,7 +117,7 @@ void addBook()
 
             if (titleIsNumber)
             {
-                printf("Invalid input. Please enter a valid book title.\n");
+                printf("\033[0;31mInvalid input. Please enter a valid book title.\033[0m\n");
             }
         } while (titleIsNumber);
 
@@ -143,7 +143,7 @@ void addBook()
 
             if (authorIsNumber)
             {
-                printf("Invalid input. Please enter a valid author name.\n");
+                printf("\033[0;31mInvalid input. Please enter a valid author name.\033[0m\n");
             }
         } while (authorIsNumber);
 
@@ -153,11 +153,11 @@ void addBook()
         availability[bookCount] = 1;
         bookCount++;
 
-        printf("Book added successfully.\n");
+        printf("\033[0;32mBook added successfully.\033[0m\n");
     }
     else
     {
-        printf("Library is full, cannot add more books.\n");
+        printf("\033[0;31mLibrary is full, cannot add more books.\033[0m\n");
     }
 }
 
@@ -178,7 +178,7 @@ void DisplayAvailableBooks()
     }
     if (!found)
     {
-        printf("No available books.\n");
+        printf("\033[0;31mNo available books.\033[0m\n");
     }
     printf("===============================================\n");
 }
@@ -196,7 +196,7 @@ void borrowBook()
         isDigits = isOnlyDigits(title);
         if (isDigits)
         {
-            printf("Invalid input. Title cannot be only digits.\n");
+            printf("\033[0;31mInvalid input. Title cannot be only digits.\033[0m\n");
         }
     } while (isDigits);
 
@@ -208,7 +208,7 @@ void borrowBook()
             if (availability[i])
             {
                 availability[i] = 0;
-                printf("You have successfully borrowed:\n");
+                printf("\033[0;32mYou have successfully borrowed:\033[0m\n");
                 printf("\n============================================");
                 printf("\nTitle  \t \t            Author");
                 printf("\n=============================================\n");
@@ -217,13 +217,13 @@ void borrowBook()
             }
             else
             {
-                printf("The book is already borrowed.\n");
+                printf("\033[0;31mThe book is already borrowed.\033[0m\n");
                 return;
             }
         }
         i++;
     }
-    printf("The book was not found.\n");
+    printf("\033[0;31mThe book was not found.\033[0m\n");
 }
 
 void returnBook()
@@ -239,7 +239,7 @@ void returnBook()
         isDigits = isOnlyDigits(title);
         if (isDigits)
         {
-            printf("Invalid input. Title cannot be only digits.\n");
+            printf("\033[0;31mInvalid input. Title cannot be only digits.\033[0m\n");
         }
     } while (isDigits);
 
@@ -251,7 +251,7 @@ void returnBook()
             if (!availability[i])
             {
                 availability[i] = 1;
-                printf("You returned the book:\n");
+                printf("\033[0;32mYou returned the book:\033[0m\n");
                 printf("\n============================================");
                 printf("\nTitle  \t \t            Author");
                 printf("\n=============================================\n");
@@ -260,13 +260,13 @@ void returnBook()
             }
             else
             {
-                printf("The book was not borrowed.\n");
+                printf("\033[0;31mThe book was not borrowed.\033[0m\n");
                 return;
             }
         }
         i++;
     }
-    printf("The book was not found.\n");
+    printf("\033[0;31mThe book was not found.\033[0m\n");
 }
 
 void searchBooksByTitle()
@@ -283,7 +283,7 @@ void searchBooksByTitle()
         isDigits = isOnlyDigits(title);
         if (isDigits)
         {
-            printf("Invalid input. Title cannot be only digits.\n");
+            printf("\033[0;31mInvalid input. Title cannot be only digits.\033[0m\n");
         }
     } while (isDigits);
 
@@ -301,7 +301,7 @@ void searchBooksByTitle()
     }
     if (!found)
     {
-        printf("No books found with the title containing '%s'.\n", title);
+        printf("\033[0;31mNo books found with the title containing '%s'.\033[0m\n", title);
     }
 }
 
@@ -319,7 +319,7 @@ void searchBooksByAuthor()
         isDigits = isOnlyDigits(author);
         if (isDigits)
         {
-            printf("Invalid input. Author name cannot be only digits.\n");
+            printf("\033[0;31mInvalid input. Author name cannot be only digits.\033[0m\n");
         }
     } while (isDigits);
 
@@ -337,6 +337,6 @@ void searchBooksByAuthor()
     }
     if (!found)
     {
-        printf("No books found by the author '%s'.\n", author);
+        printf("\033[0;31mNo books found by the author '%s'.\033[0m\n", author);
     }
 }
