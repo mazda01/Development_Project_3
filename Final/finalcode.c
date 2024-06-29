@@ -289,7 +289,7 @@ void searchBooksByTitle()
 
     for (i = 0; i < bookCount; i++)
     {
-        if (strstr(titles[i], title) != NULL)
+        if (strncmp(titles[i], title, strlen(title)) == 0)
         {
             printf("\n============================================");
             printf("\nTitle  \t \t            Author");
@@ -301,7 +301,7 @@ void searchBooksByTitle()
     }
     if (!found)
     {
-        printf("\033[0;31mNo books found with the title containing '%s'.\033[0m\n", title);
+        printf("\033[0;31mNo books found with the title starting with '%s'.\033[0m\n", title);
     }
 }
 
@@ -319,13 +319,13 @@ void searchBooksByAuthor()
         isDigits = isOnlyDigits(author);
         if (isDigits)
         {
-            printf("\033[0;31mInvalid input. Author name cannot be only digits.\033[0m\n");
+            printf("\033[0;31mInvalid input. Author name cannot be only digits.\033{0m\n");
         }
     } while (isDigits);
 
     for (i = 0; i < bookCount; i++)
     {
-        if (strstr(authors[i], author) != NULL)
+        if (strncmp(authors[i], author, strlen(author)) == 0)
         {
             printf("\n============================================");
             printf("\nTitle  \t \t            Author");
@@ -337,6 +337,6 @@ void searchBooksByAuthor()
     }
     if (!found)
     {
-        printf("\033[0;31mNo books found by the author '%s'.\033[0m\n", author);
+        printf("\033[0;31mNo books found by the author starting with '%s'.\033[0m\n", author);
     }
 }
