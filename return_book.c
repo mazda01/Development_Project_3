@@ -9,10 +9,21 @@ int bookCount = 0;
 void returnBook()
 {
     char title[100];
-    printf("Enter the title of the book to return: ");
-    scanf(" %[^\n]%*c", title);
+    int isDigits;
+    int i;
 
-    int i = 0;
+    do
+    {
+        printf("Enter the title of the book to return: ");
+        scanf(" %[^\n]%*c", title);
+        isDigits = isOnlyDigits(title);
+        if (isDigits)
+        {
+            printf("\033[0;31mInvalid input. Title cannot be only digits.\033[0m\n");
+        }
+    } while (isDigits);
+
+    i = 0;
     while (i < bookCount)
     {
         if (strcmp(titles[i], title) == 0)
@@ -20,19 +31,20 @@ void returnBook()
             if (!availability[i])
             {
                 availability[i] = 1;
-                printf("You returned the book:\n");
-                printf("Tittle\t Author\n");
-                printf("%s\t %s\n", titles, authors);
+                printf("\033[0;32mYou returned the book:\033[0m\n");
+                printf("\n============================================");
+                printf("\nTitle  \t \t            Author");
+                printf("\n=============================================\n");
+                printf("%s    \t \t           %s\n", titles[i], authors[i]);
                 return;
             }
             else
             {
-                printf("The book was not borrowed.\n");
+                printf("\033[0;31mThe book was not borrowed.\033[0m\n");
                 return;
             }
         }
         i++;
     }
-    printf("The book was not found.\n");
-
+    printf("\033[0;31mThe book was not found.\033[0m\n");
 }
