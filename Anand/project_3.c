@@ -6,32 +6,40 @@ char authors[5][100];
 int availability[5];
 int bookCount = 0;
 
+int main()
+{
+    return 0;
+
+}
 void addBook()
 {
     char tempTitle[100];
     char tempAuthor[100];
     int titleIsNumber, authorIsNumber;
+    int i;
 
     if (bookCount < 5)
     {
         do
         {
-            titleIsNumber = 0;
+            titleIsNumber = 1;
             printf("Enter book title: ");
             scanf(" %[^\n]%*c", tempTitle);
 
-            for (int i = 0; tempTitle[i] != '\0'; i++)
+            i = 0;
+            while (tempTitle[i] != '\0')
             {
-                if (tempTitle[i] >= '0' && tempTitle[i] <= '9')
+                if ((tempTitle[i] < '0' || tempTitle[i] > '9') && tempTitle[i] != ' ')
                 {
-                    titleIsNumber = 1;
+                    titleIsNumber = 0;
                     break;
                 }
+                i++;
             }
 
             if (titleIsNumber)
             {
-                printf("Invalid input. Please enter a valid book title.\n");
+                printf("\033[0;31mInvalid input. Please enter a valid book title.\033[0m\n");
             }
         } while (titleIsNumber);
 
@@ -44,18 +52,20 @@ void addBook()
             printf("Enter author name: ");
             scanf(" %[^\n]%*c", tempAuthor);
 
-            for (int i = 0; tempAuthor[i] != '\0'; i++)
+            i = 0;
+            while (tempAuthor[i] != '\0')
             {
                 if (tempAuthor[i] >= '0' && tempAuthor[i] <= '9')
                 {
                     authorIsNumber = 1;
                     break;
                 }
+                i++;
             }
 
             if (authorIsNumber)
             {
-                printf("Invalid input. Please enter a valid author name.\n");
+                printf("\033[0;31mInvalid input. Please enter a valid author name.\033[0m\n");
             }
         } while (authorIsNumber);
 
@@ -65,10 +75,10 @@ void addBook()
         availability[bookCount] = 1;
         bookCount++;
 
-        printf("Book added successfully.\n");
+        printf("\033[0;32mBook added successfully.\033[0m\n");
     }
     else
     {
-        printf("Library is full, cannot add more books.\n");
+        printf("\033[0;31mLibrary is full, cannot add more books.\033[0m\n");
     }
 }
